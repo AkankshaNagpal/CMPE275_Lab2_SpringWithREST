@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
+        
+<context:component-scan base-package="edu.sjsu.cmpe275.lab2" />
+<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/>
+	
+<mvc:annotation-driven />
+
+
+<bean id="viewResolver"
+      class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+      <property name="prefix">
+      <value>/WEB-INF/</value>
+      </property>
+      
+      <property name="suffix">
+      <value>.jsp</value>
+       </property>
+      
+      </bean>
+
+<bean name="userservice" class="edu.sjsu.cmpe275.lab2.UserServiceImpl">
+   	<property name="user">
+	<map>
+	<entry>
+	<key>
+	<value>01</value>
+	</key>
+	<bean class="edu.sjsu.cmpe275.lab2.HomePage">
+		<property name="id" value="01" />
+		<property name="firstname" value="01" />
+		<property name="lastname" value="01" />
+		<property name="email" value="01" />
+		<property name="address" value="01" />
+		<property name="organization" value="01" />
+		<property name="aboutMyself" value="01" />
+	</bean>
+	</entry>
+	</map>
+	</property>
+   </bean>
+   
+   <bean name = "user" class = "edu.sjsu.cmpe275.lab2.HomePage"></bean>
+
+
+</beans>
